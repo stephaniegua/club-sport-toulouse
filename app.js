@@ -42,6 +42,7 @@ async function fetchClubs() {
     try {
         const response = await fetch(`${API_URL}?limit=100`);
         const data = await response.json();
+        console.log(data.results[0]);
         clubs = data.results;
         populateFilters();
         applyFilters();
@@ -51,9 +52,28 @@ async function fetchClubs() {
     }
 }
 
+
+
+
+function capitalize(str) {
+    return str.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+}
+
 function populateFilters() {
     const communes = [...new Set(clubs.map(c => c.uf_commune).filter(Boolean))].sort();
-    const disciplines = [...new Set(clubs.map(c => c.discipline).filter(Boolean))].sort();
+    
+    const disciplineMap = new Map();
+    clubs.forEach(c => {
+        if (c.discipline) {
+            const normalized = c.discipline.toLowerCase();
+            if (!disciplineMap.has(normalized)) {
+                disciplineMap.set(normalized, c.discipline);
+            }
+        }
+    });
+    const disciplines = [...disciplineMap.values()].sort((a, b) => 
+        capitalize(a).localeCompare(capitalize(b))
+    );
     
     communes.forEach(c => {
         const option = document.createElement('option');
@@ -64,8 +84,8 @@ function populateFilters() {
     
     disciplines.forEach(d => {
         const option = document.createElement('option');
-        option.value = d;
-        option.textContent = d;
+        option.value = d.toLowerCase();
+        option.textContent = capitalize(d);
         elements.discipline.appendChild(option);
     });
 }
@@ -75,7 +95,7 @@ function applyFilters() {
         const matchCommune = !elements.commune.value || 
             (club.uf_commune && club.uf_commune.toLowerCase().includes(elements.commune.value.toLowerCase()));
         const matchDiscipline = !elements.discipline.value || 
-            (club.discipline && club.discipline.toLowerCase().includes(elements.discipline.value.toLowerCase()));
+            (club.discipline && club.discipline.toLowerCase() === elements.discipline.value);
         const matchApade = !elements.adapte.checked || club.handicapes === 'Oui';
         return matchCommune && matchDiscipline && matchApade;
     });

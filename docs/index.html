@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Sport Toulouse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header class="header">
+        <h1>🏃 Club Sport Toulouse</h1>
+        <p>Trouvez un club sportif sur Toulouse Métropole</p>
+    </header>
 
+    <div class="filters">
+        <div class="filter-group">
+            <label for="commune">Ville</label>
+            <select id="commune">
+                <option value="">Toutes les villes</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="discipline">Sport</label>
+            <select id="discipline">
+                <option value="">Tous les sports</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="adapte">
+                <span class="checkmark"></span>
+                Accès handicapé
+            </label>
+        </div>
+
+        <div class="results-count">
+            <span id="count">0</span> club(s) trouvé(s)
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="map"></div>
+        
+        <div class="club-list" id="clubList">
+            <div class="loading">Chargement des clubs...</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

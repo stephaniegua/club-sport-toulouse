@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    opacity: 0.9;
+}
+
+.filters {
+    background: white;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-end;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.filter-group select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    min-width: 200px;
+    background: white;
+    cursor: pointer;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #1e293b;
+    font-weight: 500;
+    padding: 0.5rem 0;
+}
+
+.checkbox-label input {
+    width: 20px;
+    height: 20px;
+    accent-color: #3b82f6;
+    cursor: pointer;
+}
+
+.results-count {
+    margin-left: auto;
+    font-weight: 600;
+    color: #3b82f6;
+    font-size: 1.1rem;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 1rem;
+    padding: 1rem;
+    height: calc(100vh - 180px);
+}
+
+#map {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.club-list {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-right: 0.5rem;
+}
+
+.club-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.club-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.club-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.club-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.club-card.selected {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.club-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+.sport-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.handicap-badge {
+    display: inline-block;
+    background: #d1fae5;
+    color: #059669;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.club-info {
+    margin-top: 0.75rem;
+}
+
+.club-info p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0.25rem 0;
+}
+
+.club-info a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.club-info a:hover {
+    text-decoration: underline;
+}
+
+.loading, .no-results {
+    text-align: center;
+    padding: 3rem;
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 0.5rem;
+}
+
+.popup-content strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.popup-content p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0.125rem 0;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    #map {
+        height: 400px;
+    }
+    
+    .club-list {
+        max-height: 400px;
+    }
+}

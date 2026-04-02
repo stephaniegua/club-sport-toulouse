@@ -1,13 +1,18 @@
 🏃 Club Sport Toulouse
 
+
+
 Application web permettant de rechercher et visualiser les clubs sportifs de la métropole de Toulouse sur une carte interactive.
 
 Les données proviennent de l’Open Data de Toulouse Métropole.
 
+
 🚀 Fonctionnalités
 
 
+
 🔍 Recherche de clubs sportifs
+
 
 🗺️ Carte interactive avec Leaflet
 
@@ -31,6 +36,7 @@ Popup avec informations
 
 🛠️ Technologies utilisées
 
+
 HTML5
 
 CSS3
@@ -42,6 +48,7 @@ Leaflet
 API Open Data Toulouse Métropole
 
 🌐 Source des données
+
 
 API utilisée :
 
@@ -67,16 +74,21 @@ Puis ouvrir :
 👉 http://localhost:8000
 
 📁 Structure du projet
+
 .
 ├── index.html
+|
 ├── app.js
+|
 ├── styles.css
+
 
 
 🧠 Fonctionnement
 
 
 🔄 Chargement des données
+
 
 Récupération des clubs via l’API Open Data
 
@@ -120,9 +132,7 @@ Ajout d’un backend (Flask / Symfony)
 
 Projet réalisé par Stéphanie, dans le cadre d’un apprentissage du développement web et de la manipulation d’API.
 
-🔗 Démo
 
-👉 (à ajouter si tu déploies sur GitHub Pages ou autre)
 
 💡 Remarque
 
